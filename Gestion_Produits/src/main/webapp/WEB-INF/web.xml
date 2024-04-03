@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app  xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" >
+  <servlet>
+    <servlet-name>ProduitsServlet</servlet-name>
+    <servlet-class>Servlet.ProduitsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProduitsServlet</servlet-name>
+    <url-pattern>*.pr</url-pattern>
+  </servlet-mapping>
+</web-app>

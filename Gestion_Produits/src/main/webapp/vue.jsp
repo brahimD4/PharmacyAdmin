@@ -12,7 +12,7 @@
 <body>
 
 
-	<form action="" method="post">
+	<form action="index.pr" method="post">
 		<table>
 			<tr>
 				<td>montant: </td>

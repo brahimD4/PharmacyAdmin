@@ -17,7 +17,7 @@ public class ProduitDaoImpl implements IProduitDao {
 		Connection connection= SinglotonConnection.getConnection();
 		try {
 			PreparedStatement ps=connection.prepareStatement("INSERT INTO produits(nom_produit,prix,quantite_en_stock,descript)VALUES(?,?,?,?)");
-		    ps.setString(1, p.getNomPrduit()); 
+		    ps.setString(1, p.getNomProduit()); 
 		    ps.setDouble(2, p.getPrix());
 		    ps.setInt(3, p.getQuantite());
 		    ps.setString(4, p.getDescription());
@@ -52,7 +52,7 @@ public class ProduitDaoImpl implements IProduitDao {
 				  System.out.println(rs.getString("descript"));
 				Produit p=new Produit();
 				p.setId(rs.getInt("id"));
-				p.setNomPrduit(rs.getString("nom_produit"));
+				p.setNomProduit(rs.getString("nom_produit"));
 				p.setPrix(rs.getDouble("prix"));
 				p.setDescription(rs.getString("descript"));
 				produits.add(p);

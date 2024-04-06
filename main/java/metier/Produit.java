@@ -3,7 +3,7 @@ package metier;
 public class Produit {
 
 	private int id;
-	private String NomPrduit;
+	private String nomProduit;
 	private double prix;
 	private int quantite;
 	private String description;
@@ -11,28 +11,25 @@ public class Produit {
 	public Produit() {
 		
 	}
-	public Produit(String nomPrduit, double prix, int quantite, String description) {
+
+	public Produit(String nomProduit, double prix, int quantite, String description) {
 		super();
-		NomPrduit = nomPrduit;
+		this.nomProduit = nomProduit;
 		this.prix = prix;
 		this.quantite = quantite;
 		this.description = description;
 	}
-	
-
-
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getNomPrduit() {
-		return NomPrduit;
+	public String getNomProduit() {
+		return nomProduit;
 	}
-	public void setNomPrduit(String nomPrduit) {
-		NomPrduit = nomPrduit;
+	public void setNomProduit(String nomProduit) {
+		this.nomProduit = nomProduit;
 	}
 	public double getPrix() {
 		return prix;
@@ -52,11 +49,12 @@ public class Produit {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	
 	@Override
 	public String toString() {
-		return "Produit [id=" + id + ", NomPrduit=" + NomPrduit + ", prix=" + prix + ", quantite=" + quantite
+		return "Produit [id=" + id + ", nomProduit=" + nomProduit + ", prix=" + prix + ", quantite=" + quantite
 				+ ", description=" + description + "]";
 	}
-	
 	
 }

@@ -23,7 +23,7 @@ public class ProduitDaoImpl implements IProduitDao {
 		    ps.setString(4, p.getDescription());
 		    ps.executeUpdate();		    
 		    PreparedStatement ps2=connection.prepareStatement("SELECT MAX(id) AS MAXID FROM produits");
-		    ResultSet rs=ps2.executeQuery();
+		    ResultSet rs=ps2.executeQuery();	
 		  if(rs.next()) {
 			  p.setId(rs.getInt("MAXID"));
 		  }
@@ -42,18 +42,18 @@ public class ProduitDaoImpl implements IProduitDao {
 		Connection connection= SinglotonConnection.getConnection();
 	
 		try {
-			PreparedStatement ps=connection.prepareStatement("SELECT* FROM produits");
+			PreparedStatement ps=connection.prepareStatement("SELECT* FROM produits WHERE nom_produit=? ");
 			 
-		//	ps.setString(1, mc);
+			ps.setString(1, mc);
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()) {
 				
-				  System.out.println(rs.getString("nom_produit"));
-				  System.out.println(rs.getString("descript"));
+			
 				Produit p=new Produit();
 				p.setId(rs.getInt("id"));
 				p.setNomProduit(rs.getString("nom_produit"));
 				p.setPrix(rs.getDouble("prix"));
+				p.setQuantite(rs.getInt("quantite_en_stock"));
 				p.setDescription(rs.getString("descript"));
 				produits.add(p);
 			}
@@ -80,6 +80,32 @@ public class ProduitDaoImpl implements IProduitDao {
 	public void deleteProduit(int id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public  List<Produit> getTousProduits() {
+	
+		List<Produit> produits=new ArrayList<>();
+		Connection connection= SinglotonConnection.getConnection();
+	
+		try {
+			PreparedStatement ps=connection.prepareStatement("SELECT* FROM produits");
+			 
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				Produit p=new Produit();
+				p.setId(rs.getInt("id"));
+				p.setNomProduit(rs.getString("nom_produit"));
+				p.setPrix(rs.getDouble("prix"));
+				p.setQuantite(rs.getInt("quantite_en_stock"));
+				p.setDescription(rs.getString("descript"));
+				produits.add(p);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return produits;
 	}
 
 }

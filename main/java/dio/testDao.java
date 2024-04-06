@@ -12,11 +12,11 @@ public class testDao {
 	  Produit p2=new Produit( "HP", 12, 20,"TTRGNNH  F");
 	  
 	  ProduitDaoImpl  dio=new ProduitDaoImpl();
-		/*
-		 * dio.save(p1);
-		 * 
-		 * dio.save(p2);
-		 */
+		
+		  dio.save(p1);
+		  
+		  dio.save(p2);
+		 
 	  
 	  List<Produit> prod=dio.ProduitsParMC("HP");
 	  

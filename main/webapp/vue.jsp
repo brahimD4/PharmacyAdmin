@@ -14,16 +14,16 @@
      <link rel="stylesheet" href="css/vue.css">
 </head>
 <body>
-<nav class="navbar">
-       <a class="navbar-brand" href="#">Home</a>
-       <a class="navbar-brand" href="#"><img id="icon_Ajouter" src="images/ajouter.png"></a>
+<nav class="navbar navbar-inverse">
+       <a class="navbar-brand" href="index.pr">Home</a>
+       <a class="navbar-brand" href="NewProduit.pr" id="newProduit"><img id="icon_Ajouter" src="images/ajouter.png"></a>
 </nav>
 <div class="content">
   <div class="panel panel-primary ">
     <div class="panel-heading d-flex justify-content-between align-items-center">
       <span>les produits</span>
       <form class="navbar-form navbar-left " action="chercher.pr" method="get">
-            <input type="text" class="form-control" placeholder="Search" name="nom_produit">
+            <input type="text" class="form-control" placeholder="Search" name="nom_produit" value="${model.motCle}">
              <button type="submit" class="btn btn-default">recherche</button>
       </form>
     </div>
@@ -69,33 +69,9 @@
   </div>
 </div>
 
-<div class="Ajoute_Produit">
-  <form action="save.pr" method="get">
-
-    <div class="form-group">
-      <label for="NomPr">Nom de produit:</label>
-      <input type="text" class="form-control" id="NomPr" name="nom_produit">
-    </div>
-
-    <div class="form-group">
-      <label for="prix">Prix DH:</label>
-      <input type="number" class="form-control" id="prix" name="prix">
-    </div>
-
-    <div class="form-group">
-      <label for="quantite">Quantite:</label>
-      <input type="number" class="form-control" id="quantite" name="quantite">
-    </div>
-
-    <div class="form-group">
-      <label for="description">Description:</label>
-      <textarea class="form-control" rows="2" id="comment" name="descript"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-  </form>
-</div>
 
 
+<!-- <script src="js/main.js"></script> -->
 </body>
 
 </html>

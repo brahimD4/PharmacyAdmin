@@ -4,6 +4,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import metier.Produit;
+
 import java.io.IOException;
 import java.nio.file.Path;
 
@@ -34,7 +36,7 @@ public class ControleurServlet extends HttpServlet {
 			  ProduitDaoImpl Dio=new ProduitDaoImpl();
 			  Tous_produits.setProduits(Dio.getTousProduits());
 			  request.setAttribute("Tous_produits", Tous_produits);
-		     request.getRequestDispatcher("vue.jsp").forward(request, response);
+		      request.getRequestDispatcher("vue.jsp").forward(request, response);
 		
 		}else if(path.equals("/chercher.pr")) {
 		    	
@@ -45,6 +47,19 @@ public class ControleurServlet extends HttpServlet {
 			    PM1.setProduits(Dio.ProduitsParMC(motcle));
 			    request.setAttribute("model", PM1);
 			    request.getRequestDispatcher("vue.jsp").forward(request, response);
+		    }else if(path.equals("/NewProduit.pr")) {
+		    		
+		    	 request.getRequestDispatcher("NewProduit.jsp").forward(request, response);
+		    }else if(path.equals("/save.pr")&&(request.getMethod().equals("POST"))) {
+				
+				  String Nomproduit=request.getParameter("nom_produit"); double prix=
+				  Double.parseDouble(request.getParameter("prix")); int Quantite=
+				  Integer.parseInt(request.getParameter("quantite")); String
+				  Description=request.getParameter("description"); ProduitDaoImpl Dio=new
+				  ProduitDaoImpl(); Produit p=new
+				  Produit(Nomproduit,prix,Quantite,Description); Dio.save(p);
+				 
+		    	  request.getRequestDispatcher("vue.jsp").forward(request, response);
 		    }
 		    
 		
@@ -52,7 +67,12 @@ public class ControleurServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		doGet(request,response);
+		/*
+		 * if(path.equals("/save.pr")) { String
+		 * Nom_Produit=request.getParameter("nom_produit"); String Prix=req }
+		 */
 	}
 
 }
